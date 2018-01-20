@@ -1,0 +1,246 @@
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>crimePoint</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="css/style.css" rel="stylesheet">
+	 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	  <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+	<script>
+	  // Initialize Firebase
+	 
+	</script>
+	<script>
+
+		$(document).ready(function(){
+		 var config = {
+    apiKey: "AIzaSyA53DpBwzepM6SwAaoLZ0CVw8hggXv1Wao",
+    authDomain: "crimepoint-e5354.firebaseapp.com",
+    databaseURL: "https://crimepoint-e5354.firebaseio.com",
+    projectId: "crimepoint-e5354",
+    storageBucket: "crimepoint-e5354.appspot.com",
+    messagingSenderId: "252482425198"
+  };
+  firebase.initializeApp(config);
+				$('#SubmitData').click(function(){
+				firebase.auth().onAuthStateChanged(function(user) {
+      if(user){
+				
+					var lat = $('#form3').val();
+					var lng = $('#form4').val();
+					var tag1 = $('#form5').val();
+					var title = $('#form8').val();
+					var isOfficial = $('#form9').val();
+					var description = $('#form10').val();
+					alert('ahsg');
+					 firebase.database().ref('/development/crimeSpot/').push({
+					
+					'lat' : lat,
+					'lng' : lng,
+					'tag1' : tag1,
+					'title' : title,
+					'isOfficial' : isOfficial,
+                    'description' : description
+				  }, function(error) {
+					alert(error.message);
+					});
+					alert('rrrrr');
+					
+			  
+				  
+				}
+				else{
+				alert("First login Your Account.")
+				}
+				});				
+				  
+				});
+							
+		});
+	
+	</script>
+</head>
+
+    <body class="fixed-sn white-skin">
+    <!--Double navigation-->
+    <!--Main layout-->
+    <main class="">
+        <div class="container-fluid">
+            <!-- Section: Edit Account -->
+            <section class="section">
+                <!-- First row -->
+                <div class="row">
+                    <!-- First column -->
+                    <div class="col-lg-4">
+
+                        <!-- Card -->
+                        <div class="card contact-card card-cascade narrower mb-r">
+                            <div class="admin-panel info-admin-panel">
+                                <!-- Card title -->
+                                <div class="view black ">
+                                    <h5>Crime Point</h5>
+                                </div>
+                                <!-- /.Card title -->
+
+                                <!-- Card content -->
+                                <div class="card-block text-center">
+                                    <img src="images/crimep.png" alt="User Photo" class="rounded-circle contact-avatar my-2 mx-auto" />
+
+                                    
+                                </div>
+                                <!-- /.Card content -->
+                            </div>
+                        </div>
+                       
+                    </div>
+                    <!-- /.First column -->
+                     <div class="col-lg-8">
+                        <!--Card-->
+                        <div class="card card-cascade narrower mb-r">
+                            <div class="admin-panel info-admin-panel">
+                                <!--Card image-->
+                                <div class="view Black">
+                                    <h5>Find Latitude and Longitude</h5>
+                                </div>
+                                     <iframe src="http://www.mapcoordinates.net/en" style="height: 50%; width: 100%;"></iframe>
+                                </div>
+                            </div>
+                    </div>
+                    <!-- Second column -->
+                    <div class="col-lg-12">
+                        <!--Card-->
+                        <div class="card card-cascade narrower mb-r">
+                            <div class="admin-panel info-admin-panel">
+                                <!--Card image-->
+                                <div class="view Black">
+                                    <h5>Add Utility service</h5>
+                                </div>
+                                <!--/Card image-->
+                                <!--Card content-->
+                                <div class="card-block">
+                                    <!-- Edit Form -->
+                                    <form>
+                                        <!--First row-->
+                                        <div class="row">
+                                            <!--First column-->
+                                            <div class="col-md-6">
+                                                <div class="md-form">
+                                                    <input type="text" id="form3" class="form-control validate">
+                                                    <label for="form3" data-error="wrong" data-success="right">Latitude</label>
+                                                </div>
+                                            </div>
+                                            <!--Second column-->
+                                            <div class="col-md-6">
+                                                <div class="md-form">
+                                                    <input type="text" id="form4" class="form-control validate">
+                                                    <label for="form4" data-error="wrong" data-success="right">longitude</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--/.First row-->
+                                        <!--First row-->
+                                        <div class="row">
+                                            <!--First column-->
+                                            <div class="col-md-6">
+                                                <div class="md-form">
+                                                    <input type="text" id="form8" class="form-control validate">
+                                                    <label for="form8" data-error="wrong" data-success="right">Title </label>
+                                                </div>
+                                            </div>
+                                            <!--Second column-->
+                                            <div class="col-md-6">
+                                                <div class="md-form">
+                                                    <input type="text" id="form10" class="form-control validate">
+                                                    <label for="form10" data-error="wrong" data-success="right">Description</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--/.First row-->
+                                        <!--Second row-->
+                                        <div class="row">
+                                            <!--First column-->
+                                            <div class="col-md-6">
+                                                <div class="md-form">
+                                                    <input type="text" id="form9" class="form-control validate">
+                                                    <label for="form9">IsOfficial</label>
+                                                </div>
+                                            </div>
+                                            <!--Second column-->
+                                            <div class="col-md-6">
+                                                <div class="md-form">
+                                                    <input type="text" id="form5" class="form-control validate">
+                                                    <label for="form5" data-error="wrong" data-success="right">TimeStamp</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--/.Second row-->
+                                        <!-- Fourth row -->
+                                        <div class="row">
+                                            <div class="col-md-12 text-center">
+                                                <h1 type="submit" value="Submit" id="SubmitData" class="btn btn-primary black">Submit</h1>
+                                            </div>
+                                        </div>
+                                        <!-- /.Fourth row -->
+                                    </form>
+                                    <!-- Edit Form -->
+                                </div>
+                                <!--/.Card content-->
+                            </div>
+                        </div>
+                        <!--/.Card-->
+                    </div>
+                    <!-- /.Second column -->
+                </div>
+                <!-- /.First row -->
+            </section>
+            <!-- /.Section: Edit Account -->
+        </div>
+    </main>
+    <!--/Main layout-->
+    <div class="fixedbtn" style="bottom: 45px; right: 28px;">
+        <a href="index.html" class="btn-floating btn-large blue">
+            <i class="fa fa-undo"></i>
+        </a>
+    </div>
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="js/tether.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="js/mdb.js"></script>
+
+    <script>
+    // Data Picker Initialization
+    $('.datepicker').pickadate();
+
+
+    // Material Select Initialization
+    $(document).ready(function() {
+        $('.mdb-select').material_select();
+    });
+
+    // Sidenav Initialization
+    $(".button-collapse").sideNav();
+    var el = document.querySelector('.custom-scrollbar');
+    Ps.initialize(el);
+
+    // Tooltips Initialization
+    $(function() {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+    </script>
+</body>
+</html>
